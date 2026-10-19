@@ -6,7 +6,7 @@ require_once "includes/header.php";
 
     <div class="hero-grid-layout">
 
-        <!-- Left Column: Welcome & Main Actions -->
+        <!-- Welcome & Main Actions -->
         <div class="hero-content">
 
             <h1>
@@ -14,9 +14,7 @@ require_once "includes/header.php";
                 SPORT FACILITIES
             </h1>
 
-            <p>
-                Easily explore available sports facilities and submit your booking request online.
-            </p>
+            <p>Simply look through the sports facilities that are available and make a booking online</p>
 
             <div class="hero-buttons">
                 <a href="facilities.php" class="btn">
@@ -30,16 +28,14 @@ require_once "includes/header.php";
 
         </div>
 
-        <!-- Right Column: Ready to Book Card -->
+        <!-- Ready to Book Card -->
         <div class="hero-card">
 
             <h2>
                 Ready to Book?
             </h2>
 
-            <p>
-                Find a suitable facility and submit your booking request today.
-            </p>
+            <p>Find a suitable facility and make your booking right now</p>
 
             <a href="booking.php" class="btn-outline">
                 Start a Booking
@@ -55,46 +51,34 @@ require_once "includes/header.php";
 <section class="info-section">
 
     <h2>
-        Why Use UTB Sport Facilities?
+        Why Make Use of UTB Sports Facilities?
     </h2>
 
     <div class="info-grid">
 
         <article>
 
-            <h3>
-                View Facilities
-            </h3>
+            <h3> View Facilities</h3>
 
-            <p>
-                Browse available sports facilities, locations and capacity information.
-            </p>
+            <p>Look through the sporting facilities and venues that are available</p>
 
         </article>
 
 
         <article>
 
-            <h3>
-                Easy Booking
-            </h3>
+            <h3>Easy Booking</h3>
 
-            <p>
-                Submit your facility booking request through a simple online form.
-            </p>
+            <p>Use a quick online form to submit your facility booking request</p>
 
         </article>
 
 
         <article>
 
-            <h3>
-                Booking Management
-            </h3>
+            <h3>Booking Management</h3>
 
-            <p>
-                Administrators can review and manage facility booking requests.
-            </p>
+            <p>Requests for facility bookings can be reviewed and handled by administrators</p>
 
         </article>
 
