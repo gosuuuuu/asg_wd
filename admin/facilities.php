@@ -92,7 +92,7 @@ if (
             $id
         ]);
 
-        $message = "Facility updated successfully.";
+        $message = "Facility updated successfully";
     }
 }
 
@@ -261,66 +261,71 @@ $facilities = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <?php echo htmlspecialchars($facility["description"]); ?>
             </p>
 
+            <!-- Side-by-side action buttons container -->
+            <div class="facility-actions" style="display: flex; align-items: center; gap: 10px; margin-top: 15px; position: relative;">
 
-            <details>
+                <details class="edit-dropdown">
+                    <summary class="edit-btn" style="display: inline-block; padding: 10px 15px; background-color: #800080; color: white; text-decoration: none; border-radius: 5px; font-size: 14px; font-weight: bold; cursor: pointer;">Edit Facility</summary>
 
-                <summary>Edit Facility</summary>
+                    <div class="edit-form-box" style="position: absolute; background: #ffffff; border: 1px solid #ddd; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); z-index: 10; margin-top: 10px; width: 300px;">
+                        <form method="POST">
+                            <input
+                                type="hidden"
+                                name="id"
+                                value="<?php echo $facility["id"]; ?>"
+                            >
 
-                <form method="POST">
+                            <input
+                                type="text"
+                                name="name"
+                                value="<?php echo htmlspecialchars($facility["name"]); ?>"
+                                required
+                                style="width: 100%; margin-bottom: 10px; padding: 8px;"
+                            >
 
+                            <input
+                                type="text"
+                                name="location"
+                                value="<?php echo htmlspecialchars($facility["location"]); ?>"
+                                required
+                                style="width: 100%; margin-bottom: 10px; padding: 8px;"
+                            >
+
+                            <textarea
+                                name="description"
+                                rows="3"
+                                style="width: 100%; margin-bottom: 10px; padding: 8px;"
+                            ><?php echo htmlspecialchars($facility["description"]); ?></textarea>
+
+                            <button
+                                type="submit"
+                                name="update_facility"
+                                style="background-color: #800080; color: white; padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;"
+                            >
+                                Update
+                            </button>
+                        </form>
+                    </div>
+                </details>
+
+                <form method="POST" style="margin: 0;">
                     <input
                         type="hidden"
                         name="id"
                         value="<?php echo $facility["id"]; ?>"
                     >
 
-                    <input
-                        type="text"
-                        name="name"
-                        value="<?php echo htmlspecialchars($facility["name"]); ?>"
-                        required
-                    >
-
-                    <input
-                        type="text"
-                        name="location"
-                        value="<?php echo htmlspecialchars($facility["location"]); ?>"
-                        required
-                    >
-
-                    <textarea
-                        name="description"
-                        rows="3"
-                    ><?php echo htmlspecialchars($facility["description"]); ?></textarea>
-
                     <button
                         type="submit"
-                        name="update_facility"
+                        name="delete_facility"
+                        class="delete-btn"
+                        style="display: inline-block; padding: 10px 15px; background-color: #800080; color: white; border: none; border-radius: 5px; font-size: 14px; font-weight: bold; cursor: pointer;"
                     >
-                        Update
+                        Delete
                     </button>
-
                 </form>
 
-            </details>
-
-
-            <form method="POST">
-
-                <input
-                    type="hidden"
-                    name="id"
-                    value="<?php echo $facility["id"]; ?>"
-                >
-
-                <button
-                    type="submit"
-                    name="delete_facility"
-                >
-                    Delete
-                </button>
-
-            </form>
+            </div>
 
         </article>
 

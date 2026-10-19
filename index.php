@@ -11,10 +11,10 @@ require_once "includes/header.php";
 
             <h1>
                 WELCOME TO UTB<br>
-                SPORT FACILITIES
+                SPORT FACILITY
             </h1>
 
-            <p>Simply look through the sports facilities that are available and make a booking online</p>
+            <p>Browse available sports facilities and book online</p>
 
             <div class="hero-buttons">
                 <a href="facilities.php" class="btn">
@@ -38,7 +38,7 @@ require_once "includes/header.php";
             <p>Find a suitable facility and make your booking right now</p>
 
             <a href="booking.php" class="btn-outline">
-                Start a Booking
+                Book Now
             </a>
 
         </div>

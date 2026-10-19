@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $error = "Please enter a valid email address";
 
     } elseif (!preg_match('/^[A-Z][0-9]{8}$/', $roll_number)) {
-        $error = "Roll Number must follow the format B20250000";
+        $error = "Roll Number must follow the format BXXXXXXXX";
     
     } elseif (strlen($customer_name) > 100) {
         $error = "Name must not exceed 100 characters";
@@ -84,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $today = date("Y-m-d");
 
             if ($booking_date < $today) {
-                $error = "Booking date cannot be in the past";
+                $error = "Selected date has already passed. Please choose another date";
 
             } elseif ($start_time >= $end_time) {
                 $error = "End time must be later than start time";
@@ -116,7 +116,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
                 if ($conflict) {
-                    $error = "Sorry, this facility is already booked during the selected time";
+                    $error = "This facility is already booked for the selected time";
 
                 } else {
 
@@ -152,7 +152,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         "Pending"
                     ]);
 
-                    $message = "Booking request submitted successfully! Kindly wait for the approval";
+                    $message = "Booking request submitted - Please wait for approval";
 
                     /* Clear form after successful booking */
 

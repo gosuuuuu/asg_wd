@@ -40,6 +40,24 @@ $totalStmt = $pdo->query("
 
 $totalBookings = $totalStmt->fetchColumn();
 
+/* STATUS COUNT QUERY */
+
+$statusSql = "
+    SELECT
+        status,
+        COUNT(*) AS count
+    FROM bookings
+    GROUP BY status
+";
+
+$statusStmt = $pdo->query($statusSql);
+$statusCounts = $statusStmt->fetchAll(PDO::FETCH_KEY_PAIR);
+
+// Ensure all statuses have a default of 0 if they don't exist yet
+$pendingCount = $statusCounts['Pending'] ?? 0;
+$approvedCount = $statusCounts['Approved'] ?? 0;
+$rejectedCount = $statusCounts['Rejected'] ?? 0;
+
 ?>
 
 <!DOCTYPE html>
@@ -82,7 +100,7 @@ $totalBookings = $totalStmt->fetchColumn();
 
 <section>
 
-    <h2>Booking Summary</h2>
+    <h2>Bookings by Facility</h2>
 
     <p>
         Total bookings:
@@ -91,46 +109,54 @@ $totalBookings = $totalStmt->fetchColumn();
         </strong>
     </p>
 
-
     <table>
-
+        <colgroup>
+            <col style="width: 70%;">
+            <col style="width: 30%; text-align: center;">
+        </colgroup>
         <thead>
-
             <tr>
                 <th>Facility</th>
-                <th>Total Bookings</th>
+                <th style="text-align: center;">Total Bookings</th>
             </tr>
-
         </thead>
-
         <tbody>
-
             <?php foreach ($report as $row): ?>
-
                 <tr>
-
-                    <td>
-                        <?php
-                        echo htmlspecialchars(
-                            $row["facility_name"]
-                        );
-                        ?>
-                    </td>
-
-                    <td>
-                        <?php
-                        echo htmlspecialchars(
-                            $row["total_bookings"]
-                        );
-                        ?>
-                    </td>
-
+                    <td><?php echo htmlspecialchars($row["facility_name"]); ?></td>
+                    <td style="text-align: center;"><?php echo htmlspecialchars($row["total_bookings"]); ?></td>
                 </tr>
-
             <?php endforeach; ?>
-
         </tbody>
+    </table>
 
+    <h2 style="margin-top: 40px;">Bookings by Status</h2>
+
+    <table>
+        <colgroup>
+            <col style="width: 70%;">
+            <col style="width: 30%; text-align: center;">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>Status</th>
+                <th style="text-align: center;">Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Pending</td>
+                <td style="text-align: center;"><?php echo $pendingCount; ?></td>
+            </tr>
+            <tr>
+                <td>Approved</td>
+                <td style="text-align: center;"><?php echo $approvedCount; ?></td>
+            </tr>
+            <tr>
+                <td>Rejected</td>
+                <td style="text-align: center;"><?php echo $rejectedCount; ?></td>
+            </tr>
+        </tbody>
     </table>
 
 </section>

@@ -43,7 +43,7 @@ if (
             $id
         ]);
 
-        $message = "Booking status updated.";
+        $message = "Booking status updated";
     }
 }
 
@@ -64,7 +64,7 @@ if (
 
     $stmt->execute([$id]);
 
-    $message = "Booking deleted.";
+    $message = "Booking deleted";
 }
 
 
@@ -133,7 +133,7 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <h2>Booking Requests</h2>
 
-    <?php if ($message !== ""): ?>
+        <?php if ($message !== ""): ?>
 
         <div class="success">
             <?php echo htmlspecialchars($message); ?>
@@ -229,78 +229,72 @@ $bookings = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     ?>
                 </p>
 
+                <!-- Side-by-side action buttons container -->
+                <div class="booking-actions" style="display: flex; align-items: center; gap: 10px; margin-top: 15px; position: relative;">
 
-                <form method="POST">
+                    <!-- Dropdown for Update Status styled like a button -->
+                    <details class="edit-dropdown">
+                        <summary class="edit-btn" style="display: inline-block; padding: 10px 15px; background-color: #800080; color: white; text-decoration: none; border-radius: 5px; font-size: 14px; font-weight: bold; cursor: pointer;">Update Status</summary>
 
-                    <input
-                        type="hidden"
-                        name="id"
-                        value="<?php echo $booking["id"]; ?>"
-                    >
+                        <div class="edit-form-box" style="position: absolute; background: #ffffff; border: 1px solid #ddd; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); z-index: 10; margin-top: 10px; width: 250px;">
+                            <form method="POST">
+                                <input
+                                    type="hidden"
+                                    name="id"
+                                    value="<?php echo $booking["id"]; ?>"
+                                >
 
-                    <select name="status">
+                                <select name="status" style="width: 100%; margin-bottom: 10px; padding: 8px; border: 1px solid #ccc; border-radius: 4px; background: #fff;">
+                                    <option
+                                        value="Pending"
+                                        <?php if ($booking["status"] === "Pending") echo "selected"; ?>
+                                    >
+                                        Pending
+                                    </option>
+                                    <option
+                                        value="Approved"
+                                        <?php if ($booking["status"] === "Approved") echo "selected"; ?>
+                                    >
+                                        Approved
+                                    </option>
+                                    <option
+                                        value="Rejected"
+                                        <?php if ($booking["status"] === "Rejected") echo "selected"; ?>
+                                    >
+                                        Rejected
+                                    </option>
+                                </select>
 
-                        <option
-                            value="Pending"
-                            <?php
-                            if ($booking["status"] === "Pending") {
-                                echo "selected";
-                            }
-                            ?>
+                                <button
+                                    type="submit"
+                                    name="update_status"
+                                    style="background-color: #800080; color: white; padding: 8px 15px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%;"
+                                >
+                                    Confirm
+                                </button>
+                            </form>
+                        </div>
+                    </details>
+
+                    <!-- Delete Booking Form -->
+                    <form method="POST" style="margin: 0;">
+                        <input
+                            type="hidden"
+                            name="id"
+                            value="<?php echo $booking["id"]; ?>"
                         >
-                            Pending
-                        </option>
 
-                        <option
-                            value="Approved"
-                            <?php
-                            if ($booking["status"] === "Approved") {
-                                echo "selected";
-                            }
-                            ?>
+                        <button
+                            type="submit"
+                            name="delete_booking"
+                            class="delete-btn"
+                            style="display: inline-block; padding: 10px 15px; background-color: #800080; color: white; border: none; border-radius: 5px; font-size: 14px; font-weight: bold; cursor: pointer;"
                         >
-                            Approved
-                        </option>
+                            Delete Booking
+                        </button>
+                    </form>
 
-                        <option
-                            value="Rejected"
-                            <?php
-                            if ($booking["status"] === "Rejected") {
-                                echo "selected";
-                            }
-                            ?>
-                        >
-                            Rejected
-                        </option>
-
-                    </select>
-
-                    <button
-                        type="submit"
-                        name="update_status"
-                    >
-                        Update Status
-                    </button>
-
-                </form>
-
-
-                <form method="POST">
-
-                    <input
-                        type="hidden"
-                        name="id"
-                        value="<?php echo $booking["id"]; ?>"
-                    >
-
-                    <button
-                        type="submit"
-                        name="delete_booking"
-                    >
-                        Delete Booking
-                    </button>
-
-                </form>
+                </div>
 
             </article>
 
