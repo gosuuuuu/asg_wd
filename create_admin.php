@@ -2,9 +2,9 @@
 
 require_once "config.php";
 
-$name = "Na'aim";
-$email = "naaim@hotmail.com";
-$password = "NAAIM";
+$name = "Admin";
+$email = "admin@utb.edu.bn";
+$password = "Admin123!";
 
 $password_hash = password_hash(
     $password,
