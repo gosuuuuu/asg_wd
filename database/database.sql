@@ -1,8 +1,9 @@
 -- Database: `utb_sport_facilities`
--- Table structure for table `admins`
 
 CREATE DATABASE utb_sport_facilities;
 USE utb_sport_facilities;
+
+-- Table structure for table `admins`
 
 CREATE TABLE `admins` (
   `id` int(11) PRIMARY KEY AUTO_INCREMENT,
