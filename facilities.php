@@ -13,9 +13,7 @@ $facilities = $stmt->fetchAll(PDO::FETCH_ASSOC); // return the result from datab
 
     <h2>Our Sports Facilities</h2>
 
-    <p>
-        Browse the sports facilities available at UTB.
-    </p>
+    <p>Browse the sports facilities available at UTB</p>
 
     <?php if (count($facilities) > 0): ?>
 
@@ -25,20 +23,12 @@ $facilities = $stmt->fetchAll(PDO::FETCH_ASSOC); // return the result from datab
             <?php foreach ($facilities as $facility): ?> 
 
                 <article>
-
                     
-                    <h3>
-                        <?php echo htmlspecialchars($facility['name']); ?>
-                    </h3>
+                    <h3><?php echo htmlspecialchars($facility['name']); ?></h3>
 
-                    <p>
-                        <strong>Location:</strong>
-                        <?php echo htmlspecialchars($facility['location']); ?>
-                    </p>
+                    <p><strong>Location:</strong><?php echo htmlspecialchars($facility['location']); ?></p>
 
-                    <p>
-                        <?php echo htmlspecialchars($facility['description']); ?>
-                    </p>
+                    <p><?php echo htmlspecialchars($facility['description']); ?></p>
 
                     <a href="booking.php">
                         Book This

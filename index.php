@@ -31,9 +31,7 @@ require_once "includes/header.php";
         <!-- Ready to Book Card -->
         <div class="hero-card">
 
-            <h2>
-                Ready to Book?
-            </h2>
+            <h2>Ready to Book?</h2>
 
             <p>Find a suitable facility and make your booking right now</p>
 

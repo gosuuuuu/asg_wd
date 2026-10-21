@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $purpose = trim($_POST["purpose"] ?? "");
 
 
-    /* Step 1: Basic validation */
+    /* Basic validation */
 
     if (
         $customer_name === "" ||
@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     } else {
 
-        /* Step 2: Check facility */
+        /* Check facility */
 
         $facilitySql = "
             SELECT id, name
@@ -79,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         } else {
 
-            /* Step 3: Check date */
+            /* Check date */
 
             $today = date("Y-m-d");
 
@@ -91,7 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             } else {
 
-                /* Step 4: Check booking conflict */
+                /* Check booking conflict */
 
                 $conflictSql = "
                     SELECT id
@@ -120,7 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 } else {
 
-                    /* Step 5: Insert booking */
+                    /* Insert booking */
 
                     $sql = "
                         INSERT INTO bookings
