@@ -1,7 +1,7 @@
 <?php
 
 $host = "127.0.0.1"; // using own localhost - MySql from xampp
-$port = 3307; // Change to 3306 if needed
+$port = 3307; // Change to 3306 for default port number
 $dbname = "utb_sport_facilities"; // my datase
 $username = "root"; //mysql username
 $password = "";
